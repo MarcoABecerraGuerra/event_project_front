@@ -1,0 +1,23 @@
+<div class="modal-body">
+  <div class="row">
+      <div class="col-12">
+          <h4 class="modal-title">{{title}}</h4>
+      </div>
+      <div class="col-12 maxConteinerText" [ngClass]="{'text-center': showButtonCancell}">
+          <h6 [innerHTML]="text"></h6>
+      </div>
+      <ng-container *ngIf="showButtonConfirm && showButtonCancell, else buttons">
+          <div class="col-12 text-center">
+              <button type="button" class="btn btn-sm btn-danger mr-4"
+                  (click)="_activeModal.close('Close click')">{{textButtonCancell}}</button>
+              <button type="button" class="btn btn-sm btn-success" (click)="submmited()">{{textButtonConfirm}}</button>
+          </div>
+      </ng-container>
+      <ng-template #buttons>
+          <div class="col-12 text-right">
+              <button type="button" class="btn btn-sm btn-success"
+                  (click)="_activeModal.close('Close click')">{{textButtonConfirm}}</button>
+          </div>
+      </ng-template>
+  </div>
+</div>
