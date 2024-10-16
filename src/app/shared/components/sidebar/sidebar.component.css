@@ -1,0 +1,24 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa; /* Color de fondo para el sidebar */
+  overflow-y: auto; /* Permitir desplazamiento vertical si el contenido es grande */
+  z-index: 1000; /* Asegurar que esté superpuesto por encima del contenido */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.accordion-item {
+  border: none;
+}
+.accordion-button {
+  cursor: pointer;
+}
+.list-group-item {
+  border: none;
+}
+.list-group-item a {
+  text-decoration: none;
+  color: inherit;
+}

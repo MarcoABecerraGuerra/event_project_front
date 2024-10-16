@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="block-header text-center">
+      <div class="row">
+          <div class="col-lg-12">
+              <h2>
+              Listado de Distritos
+              </h2>
+          </div>
+      </div>
+  </div>
+
+  <div class="row clearfix mt-2">
+      <div class="col-lg-12 col-md-12">
+      <div class="card planned_task">
+          <div class="body">
+          <form [formGroup]="filterDistrito">
+          <div class="row align-items-end">
+
+              <div class="col-12 col-sm-4 col-md-3">
+                  <div class="form-group">
+                      <div class="form-group">
+                          <label for="nombreDistrito">Nombre Distrito</label>
+                              <input type="text" id="nombreDistrito" class="form-control form-control-sm"
+                                  formControlName="nombreDistrito">
+                      </div>
+                  </div>
+              </div>
+
+              </div>
+          </form>
+          <hr/>
+
+          <div class="col-12 text-right">
+              <button type="button" class="btn btn-warning mr-2" (click)="OpenModalNuevaContratacion()">
+                  <i class="fa fa-plus-circle"></i> Nuevo Distrito</button>
+          </div>
+
+          <div class="row mt-2 mb-2">
+
+              <div class="table-responsive mb-2">
+              <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th hidden="true">Contratacion Id</th>
+                      <th>Cliente</th>
+                      <th>Trabajador</th>
+                      <th>Tipo Evento</th>
+                      <th>Distrito</th>
+                      <th>Estado</th>
+                      <th>Fecha Contratacion</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="contratacionList.length > 0">
+                  <ng-container *ngFor="let contratacion of contratacionList ">
+                      <tr class="strip">
+                      <td hidden="true">{{ contratacion.iddistrito }}</td>
+                      <td>{{ contratacion.cliente }}</td>
+                      <td>{{ contratacion.trabajador }}</td>
+                      <td>{{ contratacion.tipo_evento }}</td>
+                      <td>{{ contratacion.distrito }}</td>
+                      <td>{{ contratacion.estado }}</td>
+                      <td>{{ contratacion.fecha_contratacion }}</td>
+                      <td>
+                        <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarContratacion(contratacion)"><i
+                          class="fa fa-pencil"></i></a> |
+                        <a type="button" class=" mt-1 cursor-pointer" (click)="EliminarContratacionAlert(contratacion)"><i
+                        class="fa fa-trash-o"></i></a>
+                      </td>
+                      </tr>
+                      </ng-container>
+                  </ng-container>
+              </tbody>
+          </table>
+          </div>
+      </div>
+          </div>
+      </div>
+  </div>
+</div>

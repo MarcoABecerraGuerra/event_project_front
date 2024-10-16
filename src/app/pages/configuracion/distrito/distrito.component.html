@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="block-header text-center">
+      <div class="row">
+          <div class="col-lg-12">
+              <h2>
+              Listado de Distritos
+              </h2>
+          </div>
+      </div>
+  </div>
+
+  <div class="row clearfix mt-2">
+      <div class="col-lg-12 col-md-12">
+      <div class="card planned_task">
+          <div class="body">
+
+              <!-- <div class="form-btn">
+
+                  <button class="btn btn-sm btn-success mr-2" (click)="OpenModalNuevoDistrito()">
+                  <i class="fa fa-file"></i> Nueva
+                  </button>
+
+              </div> -->
+
+          <!-- <hr/> -->
+
+          <form [formGroup]="filterDistrito">
+          <div class="row align-items-end">
+
+              <div class="col-12 col-sm-4 col-md-3">
+                  <div class="form-group">
+                      <div class="form-group">
+                          <label for="nombreDistrito">Nombre Distrito</label>
+                              <input type="text" id="nombreDistrito" class="form-control form-control-sm"
+                                  formControlName="nombreDistrito">
+                      </div>
+                  </div>
+              </div>
+
+              </div>
+          </form>
+          <hr/>
+
+          <div class="col-12 text-right">
+              <button type="button" class="btn btn-warning mr-2" (click)="OpenModalNuevoDistrito()">
+                  <i class="fa fa-plus-circle"></i> Nuevo Distrito</button>
+          </div>
+
+          <div class="row mt-2 mb-2">
+
+              <div class="table-responsive mb-2">
+              <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th hidden="true">Distrito Id</th>
+                      <th>Nombre de Distrito</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="distritoList.length > 0">
+                  <ng-container *ngFor="let distrito of distritoList ">
+                      <tr class="strip">
+                      <td hidden="true">{{ distrito.iddistrito }}</td>
+                      <td>{{ distrito.nombre }}</td>
+                      <td>
+                        <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarDistrito(distrito)"><i
+                          class="fa fa-pencil"></i></a> |
+                        <a type="button" class=" mt-1 cursor-pointer" (click)="EliminarDistritoAlert(distrito)"><i
+                        class="fa fa-trash-o"></i></a>
+                      </td>
+                      </tr>
+                      </ng-container>
+                  </ng-container>
+              </tbody>
+          </table>
+          </div>
+      </div>
+          </div>
+      </div>
+  </div>
+</div>
