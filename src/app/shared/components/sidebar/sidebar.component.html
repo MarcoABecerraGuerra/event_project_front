@@ -10,7 +10,7 @@
           aria-expanded="true"
           [attr.aria-controls]="'collapse' + i"
           (click)="toggleMenu(i)">
-          {{ menu.title }}
+          {{ menu.nombre }}
         </button>
       </h2>
       <div
@@ -22,8 +22,8 @@
         <div class="accordion-body">
           <ul class="list-group">
             <li class="list-group-item"
-              *ngFor="let subItem of menu.subItems">
-              <a [routerLink]="subItem.link">{{ subItem.title }}</a>
+              *ngFor="let subItem of menu.subopciones">
+              <a [routerLink]="subItem.ruta">{{ subItem.nombre }}</a>
             </li>
           </ul>
         </div>

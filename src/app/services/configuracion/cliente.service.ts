@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -13,25 +13,26 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   ObtenerLista(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/contratacion`, data).pipe(
+    return this.http.get(`${this.apiUrl}/cliente`, data).pipe(
       catchError(this.manejarError)
     );
   }
 
   Registrar(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/contratacion`, data).pipe(
+    return this.http.post(`${this.apiUrl}/cliente/crear`, data).pipe(
       catchError(this.manejarError)
     );
   }
 
   Actualizar(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/contratacion`, data).pipe(
+    return this.http.put(`${this.apiUrl}/cliente/editar`, data).pipe(
       catchError(this.manejarError)
     );
   }
 
   Eliminar(data: any): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/contratacion`, data).pipe(
+    const params = new HttpParams().set('idcliente', data.idcliente);
+    return this.http.delete(`${this.apiUrl}/cliente/eliminar`, {params}).pipe(
       catchError(this.manejarError)
     );
   }

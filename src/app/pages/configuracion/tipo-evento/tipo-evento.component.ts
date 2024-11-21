@@ -1,38 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ClienteService } from 'src/app/services/configuracion/cliente.service';
-import { NewClienteComponent } from './new-cliente/new-cliente.component';
-import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
+import { EditTipoEventoComponent } from './edit-tipo-evento/edit-tipo-evento.component';
+import { NewTipoEventoComponent } from './new-tipo-evento/new-tipo-evento.component';
+import { TipoEventoService } from 'src/app/services/configuracion/tipo-evento.service';
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+  selector: 'app-tipo-evento',
+  templateUrl: './tipo-evento.component.html',
+  styleUrls: ['./tipo-evento.component.css']
 })
-export class ClienteComponent implements OnInit{
+export class TipoEventoComponent implements OnInit{
 
-  filterCliente: FormGroup;
+  filterTipoEvento: FormGroup;
   submitted: boolean = false;
-  clienteList: any[] = [];
+  tipoEventoList: any[] = [];
 
   constructor(private _fb: FormBuilder,
     private _modalService: NgbModal,
-    private _clienteService: ClienteService
+    private _tipoEventoService: TipoEventoService
   ){
-    this.filterCliente = _fb.group({
-      nombreCliente: new FormControl('')
+    this.filterTipoEvento = _fb.group({
+      nombreTipoEvento: new FormControl('')
     })
   }
 
   ngOnInit(): void {
-    this.obtenerListaClientes();
+    this.obtenerListaTipoEvento();
   }
 
   OpenModalNuevoCliente(){
 
-    const modalRef = this._modalService.open(NewClienteComponent, {
+    const modalRef = this._modalService.open(NewTipoEventoComponent, {
       backdrop: 'static',
       keyboard: false,
       centered: true,
@@ -40,32 +40,32 @@ export class ClienteComponent implements OnInit{
     });
     modalRef.componentInstance.notifyParent.subscribe(($event: any) => {
       this.openAlerta('Operación Exitosa', $event);
-      this.obtenerListaClientes();
+      this.obtenerListaTipoEvento();
     });
 
   }
 
-  OpenModalEditarCliente(cliente: any){
+  OpenModalEditarTipoEvento(tipoEvento: any){
 
-    const modalRef = this._modalService.open(EditClienteComponent, {
+    const modalRef = this._modalService.open(EditTipoEventoComponent, {
       backdrop: 'static',
       keyboard: false,
       centered: true,
       size: 'xl'
     });
-    modalRef.componentInstance.cliente = cliente;
+    modalRef.componentInstance.tipoEvento = tipoEvento;
     modalRef.componentInstance.notifyParent.subscribe(($event: any) => {
       this.openAlerta('Operación Exitosa', $event);
-      this.obtenerListaClientes();
+      this.obtenerListaTipoEvento();
     });
 
   }
 
-  obtenerListaClientes(){
+  obtenerListaTipoEvento(){
     let data = {};
-    this._clienteService.ObtenerLista(data).subscribe(
+    this._tipoEventoService.ObtenerLista(data).subscribe(
       (val) =>{
-        this.clienteList = val.data;
+        this.tipoEventoList = val.data;
     });
 
   }
@@ -80,12 +80,12 @@ export class ClienteComponent implements OnInit{
     modalRef.componentInstance.text = mensaje;
   }
 
-  EliminarCliente(cliente: any){
-    const dataToSend = cliente;
-    this._clienteService.Eliminar(dataToSend).subscribe({
+  EliminarTipoEvento(tipoevento: any){
+    const dataToSend = tipoevento;
+    this._tipoEventoService.Eliminar(dataToSend).subscribe({
       next: (data) => {
         this.openAlerta("Alerta", data.message);
-        this.obtenerListaClientes();
+        this.obtenerListaTipoEvento();
       },
       error: (err) => {
         this.openAlerta("Alerta", JSON.parse(err.message).message);
@@ -93,20 +93,20 @@ export class ClienteComponent implements OnInit{
     });
   }
 
-  EliminarClienteAlert(cliente: any){
+  EliminarTipoEventoAlert(tipoevento: any){
     const modalRef = this._modalService.open(AlertComponent, {
       backdrop: 'static',
       keyboard: false,
       centered: true
     });
     modalRef.componentInstance.title = 'Alerta!';
-    modalRef.componentInstance.text = `¿Está seguro de eliminar el distrito ${cliente.nombre}`;
+    modalRef.componentInstance.text = `¿Está seguro de eliminar el distrito ${tipoevento.nombre}`;
     modalRef.componentInstance.showButtonConfirm = true;
     modalRef.componentInstance.showButtonCancell = true;
     modalRef.componentInstance.textConfirm = 'SI';
     modalRef.componentInstance.textCancell = 'NO';
     modalRef.componentInstance.notifyParent.subscribe(($event: any) => {
-      this.EliminarCliente(cliente);
+      this.EliminarTipoEvento(tipoevento);
     });
   }
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/services/login.service';
+import { MenuService } from 'src/app/services/menu.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,
     private _loginService: LoginService,
+    private _menuService: MenuService,
     private _router: Router,
     private _modalService: NgbModal) {
     this.loginGroup = _fb.group({
@@ -34,7 +36,9 @@ export class LoginComponent implements OnInit {
       this._loginService.AccederLogin(dataToSend).subscribe({
         next: (data) => {
           console.log('Respuesta',data); // Manejar la respuesta exitosa
+          localStorage.setItem('infoUsuario',data.data);
           this._router.navigate(['/menu']);
+          this.obtenerMenu();
         },
         error: (err) => {
           this.openAlerta("Alerta", JSON.parse(err.message).message);
@@ -51,6 +55,22 @@ export class LoginComponent implements OnInit {
     });
     modalRef.componentInstance.title = titulo;
     modalRef.componentInstance.text = mensaje;
+  }
+
+
+  obtenerMenu() {
+    let data = {};
+    this._menuService.obtenerMenu(data).subscribe(
+      (val) =>{
+        localStorage.removeItem('menu');
+        localStorage.setItem('menu', JSON.stringify(val.data));
+        //this._menuService.setMenuOptions(val.data);
+    });
+  }
+
+  singOut() {
+    localStorage.clear();
+    this._router.navigate(['/login']);
   }
 
 }

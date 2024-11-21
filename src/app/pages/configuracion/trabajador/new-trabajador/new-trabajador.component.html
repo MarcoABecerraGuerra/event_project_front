@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4 class="modal-title">NUEVO TRABAJADOR</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formTrabajador">
+        <h5>Datos generales</h5>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="nombre">Nombre de Trabajador*</label>
+                    <input id="nombre" class="form-control form-control-sm" formControlName="nombre"
+                        [ngClass]="{ 'is-invalid': submitted && formTrabajador.get('nombre')?.invalid }"
+                        autocomplete="off">
+                    <div *ngIf="submitted && formTrabajador.get('nombre')?.invalid" class="invalid-feedback">
+                        Nombre de Distrito es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="experiencia">Experiencia de Trabajador*</label>
+                    <input id="experiencia" class="form-control form-control-sm" formControlName="experiencia"
+                        [ngClass]="{ 'is-invalid': submitted && formTrabajador.get('experiencia')?.invalid }"
+                        autocomplete="off">
+                    <div *ngIf="submitted && formTrabajador.get('experiencia')?.invalid" class="invalid-feedback">
+                        Experiencia de Trabajador es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="disponible">Disponible de Trabajador*</label>
+                    <input id="disponible" class="form-control form-control-sm" formControlName="disponible"
+                        [ngClass]="{ 'is-invalid': submitted && formTrabajador.get('disponible')?.invalid }"
+                        autocomplete="off">
+                    <div *ngIf="submitted && formTrabajador.get('disponible')?.invalid" class="invalid-feedback">
+                        Disponible de Trabajador es requerido
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-outline-success" (click)="close()">Salir</button>
+    <button type="button" class="btn btn-sm btn-success" (click)="guardarTrabajador()">Guardar</button>
+  </div>
+  

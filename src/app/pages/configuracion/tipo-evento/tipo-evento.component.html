@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2>
-                Listado de Trabajador
+                Listado de Tipo Evento
                 </h2>
             </div>
         </div>
@@ -14,15 +14,25 @@
         <div class="card planned_task">
             <div class="body">
   
-            <form [formGroup]="filterTrabajador">
+                <!-- <div class="form-btn">
+  
+                    <button class="btn btn-sm btn-success mr-2" (click)="OpenModalNuevoDistrito()">
+                    <i class="fa fa-file"></i> Nueva
+                    </button>
+  
+                </div> -->
+  
+            <!-- <hr/> -->
+  
+            <form [formGroup]="filterTipoEvento">
             <div class="row align-items-end">
   
                 <div class="col-12 col-sm-4 col-md-3">
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="nombreTrabajador">Nombre Trabajador</label>
-                                <input type="text" id="nombreTrabajador" class="form-control form-control-sm"
-                                    formControlName="nombreTrabajador">
+                            <label for="nombreTipoEvento">Nombre Tipo Evento</label>
+                                <input type="text" id="nombreCliente" class="form-control form-control-sm"
+                                    formControlName="nombreTipoEvento">
                         </div>
                     </div>
                 </div>
@@ -32,8 +42,8 @@
             <hr/>
   
             <div class="col-12 text-right">
-                <button type="button" class="btn btn-warning mr-2" (click)="OpenModalNuevoTrabajador()">
-                    <i class="fa fa-plus-circle"></i> Nuevo Trabajador</button>
+                <button type="button" class="btn btn-warning mr-2" (click)="OpenModalNuevoCliente()">
+                    <i class="fa fa-plus-circle"></i> Nuevo Tipo Evento</button>
             </div>
   
             <div class="row mt-2 mb-2">
@@ -42,25 +52,21 @@
                 <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th hidden="true">Trabajador Id</th>
-                        <th>Nombre de Trabajador</th>
-                        <th>Experiencia</th>
-                        <th>Disponible</th>
+                        <th hidden="true">Tipo Evento Id</th>
+                        <th>Nombre de Tipo Evento</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <ng-container *ngIf="trabajadorList.length > 0">
-                    <ng-container *ngFor="let trabajador of trabajadorList ">
+                  <ng-container *ngIf="tipoEventoList.length > 0">
+                    <ng-container *ngFor="let tipoEvento of tipoEventoList ">
                         <tr class="strip">
-                        <td hidden="true">{{ trabajador.iddistrito }}</td>
-                        <td>{{ trabajador.nombre }}</td>
-                        <td>{{ trabajador.experiencia }}</td>
-                        <td>{{ trabajador.disponible }}</td>
+                        <td hidden="true">{{ tipoEvento.idcliente }}</td>
+                        <td>{{ tipoEvento.nombre }}</td>
                         <td>
-                          <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarTrabajador(trabajador)"><i
+                          <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarTipoEvento(tipoEvento)"><i
                             class="fa fa-pencil"></i></a> |
-                          <a type="button" class=" mt-1 cursor-pointer" (click)="EliminarTrabajadorAlert(trabajador)"><i
+                          <a type="button" class=" mt-1 cursor-pointer" (click)="EliminarTipoEventoAlert(tipoEvento)"><i
                           class="fa fa-trash-o"></i></a>
                         </td>
                         </tr>

@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <h2 class="text-center">Dashboard de Eventos por Mes</h2>
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw;">
+      <canvas baseChart 
+        [data]="barChartData" 
+        [options]="barChartOptions" 
+        [type]="barChartType">
+      </canvas>
+    </div>
+  </div>

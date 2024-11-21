@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuService } from 'src/app/services/menu.service';
 
 interface MenuItem {
-  title: string;
+  nombre: string;
   expanded?: boolean;
-  subItems: { title: string; link: string }[];
+  subopciones: { nombre: string; ruta: string }[];
 }
 
 @Component({
@@ -11,27 +12,34 @@ interface MenuItem {
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
-  menuItems: MenuItem[] = [
+  menuItems: any[] = [];
+
+  constructor(private _menuService: MenuService){}
+
+  ngOnInit(): void {
+    this.menuItems = this._menuService.getMenuOptions();
+  }
+
+  /*menuItems: MenuItem[] = [
     {
-      title: 'Opción 1',
+      nombre: 'Opción 1',
       expanded: false,
-      subItems: [
-        { title: 'Subopción 1-1', link: '/ruta1' },
-        { title: 'Subopción 1-2', link: '/ruta2' },
+      subopciones: [
+        { nombre: 'Subopción 1-1', ruta: '/ruta1' },
+        { nombre: 'Subopción 1-2', ruta: '/ruta2' },
       ],
     },
     {
-      title: 'Opción 2',
+      nombre: 'Opción 2',
       expanded: false,
-      subItems: [
-        { title: 'Subopción 2-1', link: '/ruta3' },
-        { title: 'Subopción 2-2', link: '/ruta4' },
+      subopciones: [
+        { nombre: 'Subopción 2-1', ruta: '/ruta3' },
+        { nombre: 'Subopción 2-2', ruta: '/ruta4' },
       ],
     },
-    // Agrega más opciones según sea necesario
-  ];
+  ];*/
 
   toggleMenu(index: number): void {
     // Cerrar todos los menús excepto el seleccionado

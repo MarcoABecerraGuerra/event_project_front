@@ -20,6 +20,15 @@ import { NewDistritoComponent } from './pages/configuracion/distrito/new-distrit
 import { EditDistritoComponent } from './pages/configuracion/distrito/edit-distrito/edit-distrito.component';
 import { NewContratacionComponent } from './pages/principal/contratacion/new-contratacion/new-contratacion.component';
 import { EditContratacionComponent } from './pages/principal/contratacion/edit-contratacion/edit-contratacion.component';
+import { TipoEventoComponent } from './pages/configuracion/tipo-evento/tipo-evento.component';
+import { NewClienteComponent } from './pages/configuracion/cliente/new-cliente/new-cliente.component';
+import { EditClienteComponent } from './pages/configuracion/cliente/edit-cliente/edit-cliente.component';
+import { NewTipoEventoComponent } from './pages/configuracion/tipo-evento/new-tipo-evento/new-tipo-evento.component';
+import { EditTipoEventoComponent } from './pages/configuracion/tipo-evento/edit-tipo-evento/edit-tipo-evento.component';
+import { EditTrabajadorComponent } from './pages/configuracion/trabajador/edit-trabajador/edit-trabajador.component';
+import { NewTrabajadorComponent } from './pages/configuracion/trabajador/new-trabajador/new-trabajador.component';
+import { DashboardComponent } from './pages/principal/dashboard/dashboard.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,15 @@ import { EditContratacionComponent } from './pages/principal/contratacion/edit-c
     NewDistritoComponent,
     EditDistritoComponent,
     NewContratacionComponent,
-    EditContratacionComponent
+    EditContratacionComponent,
+    TipoEventoComponent,
+    NewClienteComponent,
+    EditClienteComponent,
+    NewTipoEventoComponent,
+    EditTipoEventoComponent,
+    EditTrabajadorComponent,
+    NewTrabajadorComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +62,7 @@ import { EditContratacionComponent } from './pages/principal/contratacion/edit-c
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
