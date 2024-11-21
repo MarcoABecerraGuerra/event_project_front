@@ -61,7 +61,7 @@
                   <ng-container *ngIf="tipoEventoList.length > 0">
                     <ng-container *ngFor="let tipoEvento of tipoEventoList ">
                         <tr class="strip">
-                        <td hidden="true">{{ tipoEvento.idcliente }}</td>
+                        <td hidden="true">{{ tipoEvento.idtipo_evento }}</td>
                         <td>{{ tipoEvento.nombre }}</td>
                         <td>
                           <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarTipoEvento(tipoEvento)"><i

@@ -23,7 +23,7 @@ export class EditTipoEventoComponent {
     private _tipoEventoService: TipoEventoService
   ){
     this.formTipoEvento = _fb.group({
-      iddistrito: new FormControl(0),
+      idtipo_evento: new FormControl(0),
       nombre: new FormControl('')
     })
   }
