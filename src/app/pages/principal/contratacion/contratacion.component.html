@@ -16,23 +16,13 @@
           <form [formGroup]="filterDistrito">
           <div class="row align-items-end">
 
-              <div class="col-12 col-sm-4 col-md-3">
-                  <div class="form-group">
-                      <div class="form-group">
-                          <label for="nombreDistrito">Nombre Distrito</label>
-                              <input type="text" id="nombreDistrito" class="form-control form-control-sm"
-                                  formControlName="nombreDistrito">
-                      </div>
-                  </div>
-              </div>
-
               </div>
           </form>
           <hr/>
 
           <div class="col-12 text-right">
               <button type="button" class="btn btn-warning mr-2" (click)="OpenModalNuevaContratacion()">
-                  <i class="fa fa-plus-circle"></i> Nuevo Distrito</button>
+                  <i class="fa fa-plus-circle"></i> Nueva Contratacion</button>
           </div>
 
           <div class="row mt-2 mb-2">
@@ -56,11 +46,11 @@
                   <ng-container *ngFor="let contratacion of contratacionList ">
                       <tr class="strip">
                       <td hidden="true">{{ contratacion.iddistrito }}</td>
-                      <td>{{ contratacion.cliente }}</td>
-                      <td>{{ contratacion.trabajador }}</td>
-                      <td>{{ contratacion.tipo_evento }}</td>
-                      <td>{{ contratacion.distrito }}</td>
-                      <td>{{ contratacion.estado }}</td>
+                      <td>{{ contratacion.cliente.nombre }}</td>
+                      <td>{{ contratacion.trabajador.nombre }}</td>
+                      <td>{{ contratacion.tipo_evento.nombre }}</td>
+                      <td>{{ contratacion.distrito.nombre }}</td>
+                      <td>{{ contratacion.estado.descripcion }}</td>
                       <td>{{ contratacion.fecha_contratacion }}</td>
                       <td>
                         <a type="button" class=" mt-1 cursor-pointer" (click)="OpenModalEditarContratacion(contratacion)"><i

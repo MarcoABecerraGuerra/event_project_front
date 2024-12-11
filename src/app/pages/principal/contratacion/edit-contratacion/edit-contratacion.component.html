@@ -1,1 +1,104 @@
-<p>edit-contratacion works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">EDITAR CONTRATACION</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formContratacion">
+        <h5>Datos generales</h5>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="idcliente">Cliente*</label>
+                    <select id="idcliente" class="form-control form-control-sm" formControlName="idcliente"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('idcliente')?.invalid }">
+                        <option value="0" disabled selected>Seleccione un cliente</option>
+                        <option *ngFor="let cliente of clientes" [value]="cliente.idcliente">
+                            {{ cliente.nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && formContratacion.get('idcliente')?.invalid" class="invalid-feedback">
+                        Seleccionar un cliente es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="idtrabajador">Trabajador*</label>
+                    <select id="idtrabajador" class="form-control form-control-sm" formControlName="idtrabajador"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('idtrabajador')?.invalid }">
+                        <option value="0" disabled selected>Seleccione un trabajador</option>
+                        <option *ngFor="let trabajador of trabajadores" [value]="trabajador.idtrabajador">
+                            {{ trabajador.nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && formContratacion.get('idtrabajador')?.invalid" class="invalid-feedback">
+                        Seleccionar un trabajador es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="idtipo_evento">Tipo de Evento*</label>
+                    <select id="idtipo_evento" class="form-control form-control-sm" formControlName="idtipo_evento"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('idtipo_evento')?.invalid }">
+                        <option value="0" disabled selected>Seleccione un tipo de evento</option>
+                        <option *ngFor="let tipo_evento of tiposEvento" [value]="tipo_evento.idtipo_evento">
+                            {{ tipo_evento.nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && formContratacion.get('idtipo_evento')?.invalid" class="invalid-feedback">
+                        Seleccionar un tipo de evento es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="iddistrito">Distrito*</label>
+                    <select id="iddistrito" class="form-control form-control-sm" formControlName="iddistrito"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('iddistrito')?.invalid }">
+                        <option value="0" disabled selected>Seleccione un tipo de evento</option>
+                        <option *ngFor="let distrito of distritos" [value]="distrito.iddistrito">
+                            {{ distrito.nombre }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && formContratacion.get('iddistrito')?.invalid" class="invalid-feedback">
+                        Seleccionar un distrito es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="fecha_evento">Fecha del Evento*</label>
+                    <input type="date" id="fecha_evento" class="form-control form-control-sm" formControlName="fecha_evento"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('fecha_evento')?.invalid }">
+                    <div *ngIf="submitted && formContratacion.get('fecha_evento')?.invalid" class="invalid-feedback">
+                        Seleccionar una fecha es obligatorio
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label for="precio">Precio*</label>
+                    <input 
+                        id="precio" 
+                        type="number" 
+                        class="form-control form-control-sm" 
+                        formControlName="precio"
+                        [ngClass]="{ 'is-invalid': submitted && formContratacion.get('precio')?.invalid }"
+                        step="0.01" 
+                        autocomplete="off">
+                    <div *ngIf="submitted && formContratacion.get('precio')?.invalid" class="invalid-feedback">
+                        Ingresar un precio válido es obligatorio
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-outline-success" (click)="close()">Salir</button>
+    <button type="button" class="btn btn-sm btn-success" (click)="actualizarContratacion()">Guardar Cambios</button>
+  </div>
+  

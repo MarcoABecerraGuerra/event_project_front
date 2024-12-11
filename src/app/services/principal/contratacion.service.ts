@@ -19,13 +19,19 @@ export class ContratacionService {
   }
 
   Registrar(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/contratacion`, data).pipe(
+    return this.http.post(`${this.apiUrl}/contratacion/crear`, data).pipe(
       catchError(this.manejarError)
     );
   }
 
   Actualizar(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/contratacion`, data).pipe(
+    return this.http.put(`${this.apiUrl}/contratacion/editar`, data).pipe(
+      catchError(this.manejarError)
+    );
+  }
+
+  Eliminar(data: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/contratacion/eliminar?idcontratacion=${data.idcontratacion}`, data).pipe(
       catchError(this.manejarError)
     );
   }
