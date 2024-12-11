@@ -69,7 +69,7 @@ export class EditContratacionComponent implements OnInit{
 
   actualizarContratacion(){
     const dataToSend = this.formContratacion.getRawValue();
-    this._contratacionService.Registrar(dataToSend).subscribe({
+    this._contratacionService.Actualizar(dataToSend).subscribe({
       next: (data) => {
         this.notifyParent.next(data.message);
         this.close();

@@ -7,6 +7,7 @@ import { TipoEventoService } from 'src/app/services/configuracion/tipo-evento.se
 import { TrabajadorService } from 'src/app/services/configuracion/trabajador.service';
 import { ContratacionService } from 'src/app/services/principal/contratacion.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-new-contratacion',
@@ -40,7 +41,7 @@ export class NewContratacionComponent implements OnInit{
       idtipo_evento: new FormControl(0),
       iddistrito: new FormControl(0),
       idestado: new FormControl(1),
-      fecha_evento: new FormControl(''),
+      fecha_evento: new FormControl(moment().tz('America/Lima').format('YYYY-MM-DD')),
       precio: new FormControl(0)
     })
   }

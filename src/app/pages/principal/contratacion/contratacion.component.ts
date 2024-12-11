@@ -100,7 +100,7 @@ export class ContratacionComponent implements OnInit {
       centered: true
     });
     modalRef.componentInstance.title = 'Alerta!';
-    modalRef.componentInstance.text = `¿Está seguro de eliminar el distrito ${contratacion.nombre}`;
+    modalRef.componentInstance.text = `¿Está seguro de eliminar la contratacion?`;
     modalRef.componentInstance.showButtonConfirm = true;
     modalRef.componentInstance.showButtonCancell = true;
     modalRef.componentInstance.textConfirm = 'SI';
